@@ -60,27 +60,33 @@ let pokemonRepository = (function () {
   
       return console.log(filteredList);
     }
+
+    function addListItem(pokemon) {
+
+        let unorderedList = document.querySelector('.pokemon-list');
+        let listItem = document.createElement('li');
+        let button = document.createElement('button');
+    
+        button.innerText = pokemon.name;
+        button.classList.add("button");
+        listItem.appendChild(button);
+        unorderedList.appendChild(listItem);
+    
+    }
   
     return {
       add: add,
       getAll: getAll,
       search: search,
+      addListItem: addListItem
     };
   })();
   
-  function listPokemon(pokemon) {
-    if (pokemon["height"] > 2) {
-      document.write(
-        pokemon["name"]
-          .concat(" height:", pokemon["height"])
-          .concat("- Wow, that's big! <br>")
-      );
-    } else {
-      document.write(
-        pokemon["name"].concat(" height:", pokemon["height"]).concat("<br>")
-      );
-    }
-  }
   
-  pokemonRepository.getAll().forEach(listPokemon);
+ 
+  
+  pokemonRepository.getAll().forEach(function(pokemon) {
+    pokemonRepository.addListItem(pokemon)
+
+  });
   
