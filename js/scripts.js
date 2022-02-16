@@ -1,10 +1,7 @@
 let pokemonRepository = (function () {
-    let pokemonList = [
-      { name: "Pikachu", type: ["electric", "mouse"], height: 2 },
-      { name: "Squirtle", type: ["water", "turtle"], height: 3 },
-      { name: "Bulbasoar", type: ["Grass", "monster"], height: 1 },
-    ];
-  
+    let pokemonList = [];
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+
     function arrayEquals(a, b) {
       return (
         Array.isArray(a) &&
@@ -13,7 +10,14 @@ let pokemonRepository = (function () {
         a.every((val, index) => val === b[index])
       );
     }
-  
+
+    function LoadList() {
+        return fetch(apiurl).then(function (response) {
+            
+        })
+    }
+    
+
     function add(pokemon) {
       // Check if variable pushed is of object type //
       if (
@@ -22,15 +26,14 @@ let pokemonRepository = (function () {
         pokemon !== null
       ) {
         // Check if Pushed keys match pokemonList keys //
-        let pokeKeys = ["name", "type", "height"];
+        let pokeKeys = ["name", "detailsUrl"];
         let pushedobject = Object.keys(pokemon);
   
         if (arrayEquals(pushedobject, pokeKeys)) {
           // Check if data types match //
           if (
             typeof pokemon["name"] === "string" &&
-            Array.isArray(pokemon["type"]) &&
-            typeof pokemon["height"] === "number"
+            typeof pokemon["detailsUrl"] === "string"
           ) {
             pokemonList.push(pokemon);
             console.log("Success");
@@ -61,9 +64,12 @@ let pokemonRepository = (function () {
       return console.log(filteredList);
     }
 
+  
+
     function showDetails(pokemon) {
         console.log(pokemon)
-    }
+    });
+ }
 
     function addListItem(pokemon) {
 
@@ -89,15 +95,18 @@ let pokemonRepository = (function () {
       add: add,
       getAll: getAll,
       search: search,
-      addListItem: addListItem
+      addListItem:addListItem,
+      loadList: loadList
     };
   })();
   
   
  
   
-  pokemonRepository.getAll().forEach(function(pokemon) {
-    pokemonRepository.addListItem(pokemon)
-
+  pokemonRepository.loadList().then(function() {
+    // Now the data is loaded!
+      pokemonRepository.getAll().forEach(function(pokemon){
+         pokemonRepository.addListItem(pokemon);
+    });
   });
   
