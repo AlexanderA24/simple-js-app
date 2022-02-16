@@ -61,6 +61,10 @@ let pokemonRepository = (function () {
       return console.log(filteredList);
     }
 
+    function showDetails(pokemon) {
+        console.log(pokemon)
+    }
+
     function addListItem(pokemon) {
 
         let unorderedList = document.querySelector('.pokemon-list');
@@ -69,11 +73,18 @@ let pokemonRepository = (function () {
     
         button.innerText = pokemon.name;
         button.classList.add("button");
+
+        button.addEventListener('click', showDetails);
+           
+
         listItem.appendChild(button);
         unorderedList.appendChild(listItem);
+
     
     }
   
+  
+
     return {
       add: add,
       getAll: getAll,
