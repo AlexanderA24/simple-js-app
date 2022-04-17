@@ -203,6 +203,8 @@ let pokemonRepository = (function () {
         // Create button for pokemon // 
         button.innerText = pokemon.name;
         button.classList.add("button");
+
+        
         button.setAttribute("id","show-modal")
 
         // Show modal on click // 
