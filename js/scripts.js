@@ -199,10 +199,15 @@ let pokemonRepository = (function () {
         let unorderedList = document.querySelector('.list-group');
         let listItem = document.createElement('li');
         let button = document.createElement('button');
+        let buttonContainer = document.createElement('div');
     
         // Create button for pokemon // 
         button.innerText = pokemon.name;
-        button.classList.add("btn btn-primary");
+
+        buttonContainer.classList.add("d-grid");
+        buttonContainer.classList.add("gap-2");
+        button.classList.add("btn");
+        button.classList.add("btn-light");
         listItem.classList.add("list-group-item")
 
 
@@ -216,8 +221,8 @@ let pokemonRepository = (function () {
 
      
       
-
-        listItem.appendChild(button);
+        buttonContainer.appendChild(button);
+        listItem.appendChild(buttonContainer);
         unorderedList.appendChild(listItem);
 
     
