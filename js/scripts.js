@@ -67,57 +67,24 @@ let pokemonRepository = (function () {
       return console.log(filteredList);
     }
 
-    // Function show the pop up (modal) with the pokemons details 
+    //Function show the pop up (modal) with the pokemons details 
 
     function showModal(imageUrl, title,text) {
-      let modalContainer = document.querySelector('#modal-container');
+      let modaltitle= document.querySelector('#modal-title');
+    
+      modaltitle.innerText = title;
 
-      // add class 'is-visible' to HTML element with id #modal-container // 
-      modalContainer.classList.add('is-visible');
-
-      //Clear all existing modal content
-      modalContainer.innerHTML = '';
-      
-      let modal = document.createElement('div');
-      modal.classList.add('modal');
-
-     // Add the new modal content
-      let closeButtonElement = document.createElement('button');
-
-      // Add close button // 
-      closeButtonElement.classList.add('modal-close');
-      closeButtonElement.innerText = 'Close';
-      closeButtonElement.addEventListener('click', hideModal);
-
-      // Add image element // 
+      let modalbody= document.querySelector('#modal-body');
+    
+      modalbody.innerText = text;
 
       let imageElement = document.createElement('img');
       imageElement.src  = imageUrl
 
-      // Add title element // 
-      let titleElement = document.createElement('h1');
-      titleElement.innerText = title;
+      modalbody.appendChild(imageElement);
+      $('#modal-container').modal('show');
 
-      // Add p element // 
-      let contentElement = document.createElement('p');
-      contentElement.innerText = text;
-
-      // Add elements to div // 
-      // Example output below // 
-      //  <div class="modal">
-      //    <button class="modal-close"> Close </button>
-      //      <h1>Name: bulbasaur </h1>
-      //      <p>Height: 7</p>
-      //   </div>
-      modal.appendChild(closeButtonElement);
-      modal.appendChild(imageElement);
-      modal.appendChild(titleElement);
-      modal.appendChild(contentElement);
-      modalContainer.appendChild(modal);
-
-      modalContainer.classList.add('is-visible');
-
-
+  
     }
     
     // Function to hide modal ( p)
@@ -208,11 +175,13 @@ let pokemonRepository = (function () {
         buttonContainer.classList.add("gap-2");
         button.classList.add("btn");
         button.classList.add("btn-light");
-        listItem.classList.add("list-group-item")
+        listItem.classList.add("list-group-item");
 
 
-        button.setAttribute("id","show-modal")
-        button.setAttribute("type","button")
+        button.setAttribute("id","show-modal");
+        button.setAttribute("type","button");
+        button.setAttribute("data-toggle","modal");
+        button.setAttribute("data-target",'#modal-container');
         
         //Show modal on click // 
         button.addEventListener('click', function(event) {
@@ -233,6 +202,7 @@ let pokemonRepository = (function () {
 
         // Display details on click // 
         showModal(item.imageUrl,"Name: " + item.name,"Height: "  + item.height);
+        
       }
       )
     }
