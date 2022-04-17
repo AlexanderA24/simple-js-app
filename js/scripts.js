@@ -196,21 +196,25 @@ let pokemonRepository = (function () {
 // add list item to <ul> element // 
     function addListItem(pokemon) {
 
-        let unorderedList = document.querySelector('.pokemon-list');
+        let unorderedList = document.querySelector('.list-group');
         let listItem = document.createElement('li');
         let button = document.createElement('button');
     
         // Create button for pokemon // 
         button.innerText = pokemon.name;
-        button.classList.add("button");
+        button.classList.add("btn btn-primary");
+        listItem.classList.add("list-group-item")
 
-        
+
         button.setAttribute("id","show-modal")
-
-        // Show modal on click // 
+        button.setAttribute("type","button")
+        
+        //Show modal on click // 
         button.addEventListener('click', function(event) {
           showDetails(pokemon);
         });
+
+     
       
 
         listItem.appendChild(button);
