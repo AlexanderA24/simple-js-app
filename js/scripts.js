@@ -1,3 +1,5 @@
+let i = 0 
+
 let pokemonRepository = (function () {
 
   // Create empty array for pokemon // 
@@ -160,14 +162,73 @@ let pokemonRepository = (function () {
       });
     }
 
-// add list item to <ul> element // 
-    function addListItem(pokemon) {
+
+// // add list item to <ul> element //  Was trying to dynamically create rows and cols
+//     function addListItem(pokemon) {
+
+
+     
+//         let unorderedList = document.querySelector('.list-group');
+//         let listItem = document.createElement('li');
+//         // let buttonContainer = document.createElement('div');
+//         let button = document.createElement('button');
+     
+       
+//         // Create button for pokemon // 
+//         button.innerText = pokemon.name;
+
+//         // buttonContainer.classList.add("d-grid");
+//         // buttonContainer.classList.add("gap-2");
+//         button.classList.add("btn");
+//         button.classList.add("btn-light");
+//         button.classList.add("col-2")
+
+//         listItem.classList.add("list-group-item");
+//         listItem.classList.add("bg-transparent");
+//         listItem.classList.add("col-2");
+
+
+ 
+
+//         button.setAttribute("id","show-modal");
+//         button.setAttribute("type","button");
+//         button.setAttribute("data-toggle","modal");
+//         button.setAttribute("data-target",'#modal-container');
+        
+//         //Show modal on click // 
+//         button.addEventListener('click', function(event) {
+//           showDetails(pokemon);
+//         });
+
+//         // While i is less than a number that is divisble by 6 put it on the row that is divisble by 6 
+//         for (i ; i <= 150 ; i ++) {
+//           if ( i % 6 === 0) {
+//             var row = document.createElement('div');
+//             row.classList.add('row');
+//             row.setAttribute("id",i);
+//             unorderedList.appendChild(row);
+  
+//         }   
+//             listItem.appendChild(button);
+//             row.appendChild(listItem);  
+//       }
+
+//     //   for (i ; i <= 150 ; i ++) {
+//     //     if ( i % 6 === 0) {
+          
+
+
+//     //   }       
+//     // }
+      
+   // add list item to <ul> element // 
+      function addListItem(pokemon) {
 
         let unorderedList = document.querySelector('.list-group');
         let listItem = document.createElement('li');
         let button = document.createElement('button');
         let buttonContainer = document.createElement('div');
-    
+
         // Create button for pokemon // 
         button.innerText = pokemon.name;
 
@@ -188,15 +249,25 @@ let pokemonRepository = (function () {
           showDetails(pokemon);
         });
 
-     
+    
       
         buttonContainer.appendChild(button);
         listItem.appendChild(buttonContainer);
         unorderedList.appendChild(listItem);
 
-    
+
     }
-  
+        
+      
+      
+        // buttonContainer.appendChild(button);
+        // listItem.appendChild(button);
+        
+        // unorderedList.appendChild(listItem);
+
+    
+    
+    
     function showDetails(item) {
       loadDetails(item).then(function(){
 

@@ -1,5 +1,19 @@
 /* CSS */
-.button {
+
+h2 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding-top: 2%;
+}
+.pokeball {
+  max-width: 250px;
+  max-height: 275px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+
+/* .button {
   display: inline-block;
   padding: 0.5em 3em;
   border: 0.16em solid #ffffff;
@@ -23,7 +37,8 @@
 .button:active {
   color: #84e1fd;
   border-color: #bbbbbb;
-}
+} */
+
 @media all and (max-width: 30em) {
   .button {
     display: block;
