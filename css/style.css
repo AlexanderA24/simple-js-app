@@ -1,49 +1,61 @@
-
 /* CSS */
-.button {
 
-    display:inline-block;
-    padding:0.5em 3em;
-    border:0.16em solid #FFFFFF;
-    margin:0 0.3em 0.3em 0;
-    box-sizing: border-box;
-    text-decoration:none;
-    text-transform:uppercase;
-    font-family:'Roboto',sans-serif;
-    font-weight:400;
-    color:#140606;
-    text-align:center;
-    transition: all 0.15s;
-    width: 100%;
-    min-width: 10%;
-    }
-    .button:hover{
-    color:#DDDDDD;
-    border-color:#DDDDDD;
-    }
-    .button:active{
-    color:#BBBBBB;
-    border-color:#BBBBBB;
-    }
-    @media all and (max-width:30em){
-    .button{
-    display:block;
-    margin:0.4em auto;
-    
-    }
-    }
+h2 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding-top: 2%;
+}
+.pokeball {
+  max-width: 250px;
+  max-height: 275px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+
+/* .button {
+  display: inline-block;
+  padding: 0.5em 3em;
+  border: 0.16em solid #ffffff;
+  margin: 0 0.3em 0.3em 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #140606;
+  text-align: center;
+  transition: all 0.15s;
+  width: 100%;
+  min-width: 10%;
+}
+.btn:hover {
+  background-color: rgb(197, 104, 250);
+  color: #dddddd;
+  border-color: #dddddd;
+}
+.button:active {
+  color: #84e1fd;
+  border-color: #bbbbbb;
+} */
+
+@media all and (max-width: 30em) {
+  .button {
+    display: block;
+    margin: 0.4em auto;
+  }
+}
 
 .pokemon-list {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 h2 {
-    font-family:'Roboto',sans-serif;
-    font-weight:400;
-    text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  text-align: center;
 }
-
 
 #modal-container {
   display: none;
@@ -55,50 +67,50 @@ h2 {
 }*/
 
 #modal-container.is-visible {
-    position: fixed;
-    padding: 20px;
-    box-sizing: border-box;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.5);
-    
-    /* to show it above other content */
-    z-index: 999; 
-    
-    /* to allow scrolling if the screen is not high enough*/
-    overflow: auto; 
-    
-    /* this is used to center the modal */
-    display: grid;
-    text-align: center;
-  }
-  
+  position: fixed;
+  padding: 20px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+
+  /* to show it above other content */
+  z-index: 999;
+
+  /* to allow scrolling if the screen is not high enough*/
+  overflow: auto;
+
+  /* this is used to center the modal */
+  display: grid;
+  text-align: center;
+}
+
 .modal {
-margin: auto;
-display: inline-block;
-box-sizing: border-box;
-background: rgb(255, 255, 255);
-padding: 15px;
-width: 100%;
-max-width: 700px;
-text-align: center;
+  margin: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  background: rgb(255, 255, 255);
+  padding: 15px;
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
 }
 
 .modal-close {
-float: right;
--webkit-appearance: none;
-border: 0;
-background: none;
-color: #777;
-text-decoration: underline;
+  float: right;
+  -webkit-appearance: none;
+  border: 0;
+  background: none;
+  color: #777;
+  text-decoration: underline;
 }
 
 .modal h1 {
-margin-top: 0;
+  margin-top: 0;
 }
 
 .modal p {
-margin-bottom: 0;
+  margin-bottom: 0;
 }

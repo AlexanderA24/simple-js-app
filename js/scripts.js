@@ -1,3 +1,5 @@
+let i = 0 
+
 let pokemonRepository = (function () {
 
   // Create empty array for pokemon // 
@@ -67,57 +69,24 @@ let pokemonRepository = (function () {
       return console.log(filteredList);
     }
 
-    // Function show the pop up (modal) with the pokemons details 
+    //Function show the pop up (modal) with the pokemons details 
 
     function showModal(imageUrl, title,text) {
-      let modalContainer = document.querySelector('#modal-container');
+      let modaltitle= document.querySelector('#modal-title');
+    
+      modaltitle.innerText = title;
 
-      // add class 'is-visible' to HTML element with id #modal-container // 
-      modalContainer.classList.add('is-visible');
-
-      //Clear all existing modal content
-      modalContainer.innerHTML = '';
-      
-      let modal = document.createElement('div');
-      modal.classList.add('modal');
-
-     // Add the new modal content
-      let closeButtonElement = document.createElement('button');
-
-      // Add close button // 
-      closeButtonElement.classList.add('modal-close');
-      closeButtonElement.innerText = 'Close';
-      closeButtonElement.addEventListener('click', hideModal);
-
-      // Add image element // 
+      let modalbody= document.querySelector('#modal-body');
+    
+      modalbody.innerText = text;
 
       let imageElement = document.createElement('img');
       imageElement.src  = imageUrl
 
-      // Add title element // 
-      let titleElement = document.createElement('h1');
-      titleElement.innerText = title;
+      modalbody.appendChild(imageElement);
+      $('#modal-container').modal('show');
 
-      // Add p element // 
-      let contentElement = document.createElement('p');
-      contentElement.innerText = text;
-
-      // Add elements to div // 
-      // Example output below // 
-      //  <div class="modal">
-      //    <button class="modal-close"> Close </button>
-      //      <h1>Name: bulbasaur </h1>
-      //      <p>Height: 7</p>
-      //   </div>
-      modal.appendChild(closeButtonElement);
-      modal.appendChild(imageElement);
-      modal.appendChild(titleElement);
-      modal.appendChild(contentElement);
-      modalContainer.appendChild(modal);
-
-      modalContainer.classList.add('is-visible');
-
-
+  
     }
     
     // Function to hide modal ( p)
@@ -193,35 +162,118 @@ let pokemonRepository = (function () {
       });
     }
 
-// add list item to <ul> element // 
-    function addListItem(pokemon) {
 
-        let unorderedList = document.querySelector('.pokemon-list');
+// // add list item to <ul> element //  Was trying to dynamically create rows and cols
+//     function addListItem(pokemon) {
+
+
+     
+//         let unorderedList = document.querySelector('.list-group');
+//         let listItem = document.createElement('li');
+//         // let buttonContainer = document.createElement('div');
+//         let button = document.createElement('button');
+     
+       
+//         // Create button for pokemon // 
+//         button.innerText = pokemon.name;
+
+//         // buttonContainer.classList.add("d-grid");
+//         // buttonContainer.classList.add("gap-2");
+//         button.classList.add("btn");
+//         button.classList.add("btn-light");
+//         button.classList.add("col-2")
+
+//         listItem.classList.add("list-group-item");
+//         listItem.classList.add("bg-transparent");
+//         listItem.classList.add("col-2");
+
+
+ 
+
+//         button.setAttribute("id","show-modal");
+//         button.setAttribute("type","button");
+//         button.setAttribute("data-toggle","modal");
+//         button.setAttribute("data-target",'#modal-container');
+        
+//         //Show modal on click // 
+//         button.addEventListener('click', function(event) {
+//           showDetails(pokemon);
+//         });
+
+//         // While i is less than a number that is divisble by 6 put it on the row that is divisble by 6 
+//         for (i ; i <= 150 ; i ++) {
+//           if ( i % 6 === 0) {
+//             var row = document.createElement('div');
+//             row.classList.add('row');
+//             row.setAttribute("id",i);
+//             unorderedList.appendChild(row);
+  
+//         }   
+//             listItem.appendChild(button);
+//             row.appendChild(listItem);  
+//       }
+
+//     //   for (i ; i <= 150 ; i ++) {
+//     //     if ( i % 6 === 0) {
+          
+
+
+//     //   }       
+//     // }
+      
+   // add list item to <ul> element // 
+      function addListItem(pokemon) {
+
+        let unorderedList = document.querySelector('.list-group');
         let listItem = document.createElement('li');
         let button = document.createElement('button');
-    
+        let buttonContainer = document.createElement('div');
+
         // Create button for pokemon // 
         button.innerText = pokemon.name;
-        button.classList.add("button");
-        button.setAttribute("id","show-modal")
 
-        // Show modal on click // 
+        buttonContainer.classList.add("d-grid");
+        buttonContainer.classList.add("gap-2");
+        button.classList.add("btn");
+        button.classList.add("btn-light");
+        listItem.classList.add("list-group-item");
+
+
+        button.setAttribute("id","show-modal");
+        button.setAttribute("type","button");
+        button.setAttribute("data-toggle","modal");
+        button.setAttribute("data-target",'#modal-container');
+        
+        //Show modal on click // 
         button.addEventListener('click', function(event) {
           showDetails(pokemon);
         });
-      
-
-        listItem.appendChild(button);
-        unorderedList.appendChild(listItem);
 
     
+      
+        buttonContainer.appendChild(button);
+        listItem.appendChild(buttonContainer);
+        unorderedList.appendChild(listItem);
+
+
     }
-  
+        
+      
+      
+        // buttonContainer.appendChild(button);
+        // listItem.appendChild(button);
+        
+        // unorderedList.appendChild(listItem);
+
+    
+    
+    
     function showDetails(item) {
       loadDetails(item).then(function(){
 
         // Display details on click // 
         showModal(item.imageUrl,"Name: " + item.name,"Height: "  + item.height);
+        
       }
       )
     }
